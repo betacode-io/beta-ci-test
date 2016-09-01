@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 gem install --no-document rubocop rubocop-checkstyle_formatter \
-    rails_best_practices \
     brakeman brakeman_translate_checkstyle_format \
     checkstyle_filter-git saddler saddler-reporter-github \
 
@@ -17,17 +16,6 @@ echo "* RuboCop          *"
 echo "********************"
 rubocop --require `gem which rubocop/formatter/checkstyle_formatter` --format RuboCop::Formatter::CheckstyleFormatter --out rubocop.xml
 cat rubocop.xml \
-  | checkstyle_filter-git diff origin/master \
-  | saddler report \
-    --require saddler/reporter/github \
-    --reporter $REPORTER
-
-echo "***********************"
-echo "* Rails Best Pratices *"
-echo "***********************"
-rails_best_practices -f xml
-
-cat rails_best_practices_output.xml \
   | checkstyle_filter-git diff origin/master \
   | saddler report \
     --require saddler/reporter/github \
