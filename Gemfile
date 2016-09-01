@@ -20,10 +20,6 @@ gem 'jquery-rails'
 gem 'brakeman' # Static analysis security scanner for Ruby on Rails
 gem 'rubocop' # Ruby static code analyzer
 
-##### Automated Code Review #####
-gem 'saddler'
-gem 'saddler-reporter-github'
-
 group :development, :test do
   ##### Debugging #####
   gem 'awesome_print'
