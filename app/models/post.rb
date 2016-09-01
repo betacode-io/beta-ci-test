@@ -9,4 +9,6 @@
 #
 
 class Post < ActiveRecord::Base
+  # Validation
+  validates :content, presence: true
 end
